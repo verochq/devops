@@ -12,14 +12,15 @@ vi.mock("react-router-dom", async () => {
 });
 import { MemoryRouter } from "react-router-dom";
 import { MovieDetailPage } from "../features/movies/pages/MovieDetailPage";
-import { MoviesContext } from "../features/movies/contexts/MoviesContext";
+import { MoviesContext, type MoviesContextType } from "../features/movies/contexts/MoviesContext";
 import { ReviewsContext } from "../features/movies/contexts/ReviewsContext";
 import { WatchlistContext } from "../features/movies/contexts/WatchlistContext";
-import { AuthContext } from "../features/auth/contexts/AuthContext";
+import { AuthContext, type AuthContextType } from "../features/auth/contexts/AuthContext";
 import type { Review } from "../types/review";
+import type { Movie } from "../types/movie";
 
 // 🔹 Mock movie data
-const mockMovie = {
+const mockMovie: Movie = {
     id: 1,
     title: "Inception",
     year: 2010,
@@ -30,15 +31,16 @@ const mockMovie = {
     rating: 5,
 };
 
-const mockMoviesCtx = {
+const mockMoviesCtx: MoviesContextType = {
     movies: [mockMovie],
+    setMovies: vi.fn(),
     deleteMovie: vi.fn(),
     updateMovie: vi.fn(),
     createMovie: vi.fn(),
     getMovieTitle: vi.fn(),
 };
 
-const mockAuthCtx = {
+const mockAuthCtx: AuthContextType = {
     currentUser: { id: "1", email: "user@cinelog.com", username: "TestUser", role: "user" },
     isAdmin: false,
     login: vi.fn(),
@@ -65,10 +67,10 @@ describe("MovieDetailPage", () => {
     it("renders movie detail and reviews", () => {
         render(
             <MemoryRouter initialEntries={["/movie/1"]}>
-                <AuthContext.Provider value={mockAuthCtx as any}>
-                    <MoviesContext.Provider value={mockMoviesCtx as any}>
+                <AuthContext.Provider value={mockAuthCtx}>
+                    <MoviesContext.Provider value={mockMoviesCtx}>
                         <ReviewsContext.Provider value={{ reviews: mockReviews, setReviews: mockSetReviews }}>
-                            <WatchlistContext.Provider value={mockWatchlistCtx as any}>
+                            <WatchlistContext.Provider value={mockWatchlistCtx}>
                                 <MovieDetailPage />
                             </WatchlistContext.Provider>
                         </ReviewsContext.Provider>
@@ -85,10 +87,10 @@ describe("MovieDetailPage", () => {
     it("updates reviews correctly", () => {
         render(
             <MemoryRouter initialEntries={["/movie/1"]}>
-                <AuthContext.Provider value={mockAuthCtx as any}>
-                    <MoviesContext.Provider value={mockMoviesCtx as any}>
+                <AuthContext.Provider value={mockAuthCtx}>
+                    <MoviesContext.Provider value={mockMoviesCtx}>
                         <ReviewsContext.Provider value={{ reviews: mockReviews, setReviews: mockSetReviews }}>
-                            <WatchlistContext.Provider value={mockWatchlistCtx as any}>
+                            <WatchlistContext.Provider value={mockWatchlistCtx}>
                                 <MovieDetailPage />
                             </WatchlistContext.Provider>
                         </ReviewsContext.Provider>
