@@ -29,6 +29,6 @@ describe('Header', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText('Welcome ana@example.com!')).toBeInTheDocument();
+    expect(screen.getByText('Welcome ana@example.com!!')).toBeInTheDocument();
   });
 });
