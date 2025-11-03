@@ -17,7 +17,7 @@ export const Header = () => {
         </div>
         <div className="header__user">
           <span className="header__user-message">
-            Welcome {currentUser?.email}!
+            Welcome {currentUser?.email}!!
           </span>
         </div>
         <div className="header__actions">
