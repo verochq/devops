@@ -37,7 +37,7 @@ export const MoviesTable = ({ movies, onEdit, onDelete }: MoviesTableProps) => {
                   className="table__action-button table__action-button--edit"
                   onClick={() => onEdit(movie)}
                 >
-                  Editar
+                  Edit
                 </button>
               )}
               {onDelete && (
@@ -45,7 +45,7 @@ export const MoviesTable = ({ movies, onEdit, onDelete }: MoviesTableProps) => {
                   className="table__action-button table__action-button--delete"
                   onClick={() => onDelete(movie)}
                 >
-                  Eliminar
+                  Delete
                 </button>
               )}
             </td>
