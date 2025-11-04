@@ -15,7 +15,6 @@
    git push origin v1.0.0
 
 
-
 # Deploy Strategy: Blue-Green Deployment
 
 ## What is Blue-Green Deployment?
