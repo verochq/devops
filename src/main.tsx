@@ -10,7 +10,7 @@ import { UserProvider } from "./features/user/contexts/UserProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/devops">
       <AuthProvider>
         <MoviesProvider>
           <WatchlistProvider>
